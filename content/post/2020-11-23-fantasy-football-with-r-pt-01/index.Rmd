@@ -1,0 +1,141 @@
+---
+title: Fantasy Football with R - pt. 01
+author: Alexander C. Hungerford
+date: '2020-11-23'
+slug: []
+categories:
+  - fantasy football
+tags:
+  - winners
+  - league history
+description: ''
+featured: ''
+featuredalt: ''
+featuredpath: ''
+linktitle: ''
+---
+
+
+I play in a fantasy football league with 11 of my closest friends. A constant headache for everyone is the user experience of ESPN's fantasy football site. Looking up information about our league history is especially challenging. As a result we end up with disjointed communications dispersed across email, slack, text, etc.. Our commissioners do their best to keep a spreadsheet, but it can be tedious, and the rest of us don't see updates in real-time.
+
+My goal is to use the R ecosystem to build a dashboard that each general manager (the 12 of us) can use to get the information we need at any time. This will be the first in a series of R tutorials documenting that process.
+
+## Setup
+
+You will need to install some packages if you haven't already. You can type `install.packages(packageName)` into the console.
+
+```{r, label='setup'}
+library(dplyr)
+```
+
+
+## Data Input: creating lists
+
+The first thing I want to do is create a list of all the GMs in the league. I also need a list of years our league has been active. Finally, I need to know which GMs placed 1st, 2nd, and 3rd. 
+
+In podium placement I input each GM sequentially by year. So in 2012, Mik, Jon, and Katz placed 1st, 2nd, and 3rd, respectively. In 2013, Nate, Alex, and and Katz placed 1st, 2nd, and 3rd, respectively, and so on.
+
+```{r, label='data-input'}
+# create a list of GMs
+gm <- c("Alex", "Ashton", "Colby", "Katz", "Dave", "Brett", "Ian", "Jack", "Jon", "Chris", "Todd", "Nate")
+
+# list of years league has been active
+year <- c(2012:2019)
+
+# podium placement
+first <- c("Mik", "Nate", "Nate", "Chris", "Nate", "Nate", "Dave", "Dave")
+second <- c("Jon", "Alex", "Ian", "Ross", "Jon", "Chris", "Jon", "Jon")
+third <- c("Katz", "Katz", "Jack", "Dave", "Katz", "Katz", "Chris", "Ross")
+```
+
+## What is a tibble?
+
+Now that I have my data in lists, I can create a **tibble** from those lists.
+
+* Tibbles never change your data *type*. So **strings** will not be converted into **factors**.
+* Tibbles only display the first 10 rows of data.
+* Tibbles only display the columns that will fit on your screen.
+* Tibbles summarize for you how many rows and columns you have.
+
+Why? So you don't accidentally print large datasets that will overload the memory of your console.
+
+
+```{r, label='tibble'}
+# create a tibble from lists
+podium <- tibble(year, first, second, third)
+podium
+```
+
+### Subsetting a Tibble
+
+* `$` only extracts by name.
+* `[[` extracts by name or position.
+* **Remember: lists in R are 1-indexed.** In other languages they're 0-indexed (Python/C).
+
+```{r, label="subset-tibble"}
+# extract the last column (by name)
+podium$third
+
+# extract the first column (by name)
+podium$year
+
+# extract the last column (by name - base R)
+podium["third"]
+
+# extract the first column (by name - base R)
+podium["year"]
+
+# extract the last column (by position)
+podium[[4]]
+
+# extract the first column (by position)
+podium[[1]]
+```
+
+
+## dplyr - filter, select, mutate, summarize
+
+```{r}
+
+```
+
+
+
+## Create a Matrix from a List
+
+Next I take each list and turn it into a column to make a matrix. `cbind()` stands for column bind and does exactly what I need. If you want to check that your matrix is in fact a matrix, and not a "tibble" or a "dataframe" you can use `is.matrix()`.
+
+```{r}
+# create a matrix called "winners", show output
+winners <- cbind(first, second, third)
+winners
+```
+
+```{r}
+# check that "winners" really is a matrix
+is.matrix(winners)
+```
+
+Since each row represents a different year, I need to reflect that. Now we have our winners matrix complete by year.
+
+```{r}
+# assign row and column names to matrix
+dimnames(winners) = list(year, c("first", "second", "third"))
+winners
+```
+
+
+## Turn a Matrix into a Dataframe
+
+Data frames
+
+```{r}
+# turn matrix into data frame, show output
+winners_df <- data.frame(winners)
+winners_df
+```
+
+```{r}
+# confirm winners_df is an R dataframe
+is.data.frame(winners_df)
+```
