@@ -1,0 +1,39 @@
+---
+title: How to Style Code Blocks
+author: Alexander C. Hungerford
+date: '2020-11-24'
+slug: []
+categories:
+  - formatting
+tags:
+  - code blocks
+description: ''
+featured: ''
+featuredalt: ''
+featuredpath: ''
+linktitle: ''
+type: post
+---
+
+# Problems
+
+One thing I'm noticing is that when I create a new post using the blogdown add-in each post is created as *subdirectory* in `./content/blog` but the posts don't render on the blog after saving or after building `blogdown::build_site()`.
+
+On the other hand, the posts that go directly into the `./content/blog` but do not go into a subdirectory render correctly on the `blog` page.
+
+```{r}
+library(dplyr)
+```
+
+
+```{r}
+# podium placement
+first <- c("Mik", "Nate", "Nate", "Chris", "Nate", "Nate", "Dave", "Dave")
+second <- c("Jon", "Alex", "Ian", "Ross", "Jon", "Chris", "Jon", "Jon")
+third <- c("Katz", "Katz", "Jack", "Dave", "Katz", "Katz", "Chris", "Ross")
+
+podium <- tibble(year, first, second, third)
+podium
+
+```
+

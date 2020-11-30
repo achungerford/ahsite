@@ -1,0 +1,72 @@
+---
+title: blog test post
+author: Alexander C. Hungerford
+date: '2020-11-29'
+slug: []
+categories:
+  - blog
+tags:
+  - fantasy football
+  - beginners
+description: ''
+featured: ''
+featuredalt: ''
+featuredpath: ''
+linktitle: ''
+type: post
+---
+
+<link href="index_files/anchor-sections/anchor-sections.css" rel="stylesheet" />
+<script src="index_files/anchor-sections/anchor-sections.js"></script>
+
+
+<div id="setup" class="section level2">
+<h2>Setup</h2>
+<pre class="r"><code># packages to load
+library(tidyverse)</code></pre>
+<pre><code>## -- Attaching packages --------------------------------------- tidyverse 1.3.0 --</code></pre>
+<pre><code>## v ggplot2 3.3.2     v purrr   0.3.4
+## v tibble  3.0.4     v dplyr   1.0.2
+## v tidyr   1.1.2     v stringr 1.4.0
+## v readr   1.4.0     v forcats 0.5.0</code></pre>
+<pre><code>## -- Conflicts ------------------------------------------ tidyverse_conflicts() --
+## x dplyr::filter() masks stats::filter()
+## x dplyr::lag()    masks stats::lag()</code></pre>
+</div>
+<div id="league-basics" class="section level2">
+<h2>League Basics</h2>
+<pre class="r"><code># league members - not sorted
+gm &lt;- c(&quot;Alex&quot;, &quot;Katz&quot;, &quot;Brett&quot;, &quot;Mikulich&quot;, &quot;Chris&quot;, &quot;Jack&quot;, &quot;Jon&quot;, &quot;Todd&quot;, &quot;Ian&quot;, &quot;Ashton&quot;, &quot;Dave&quot;, &quot;Nate&quot;)
+
+# alphabetized gm list
+gm &lt;- sort(gm)
+
+# show list
+gm</code></pre>
+<pre><code>##  [1] &quot;Alex&quot;     &quot;Ashton&quot;   &quot;Brett&quot;    &quot;Chris&quot;    &quot;Dave&quot;     &quot;Ian&quot;     
+##  [7] &quot;Jack&quot;     &quot;Jon&quot;      &quot;Katz&quot;     &quot;Mikulich&quot; &quot;Nate&quot;     &quot;Todd&quot;</code></pre>
+<pre class="r"><code># list of years league has been active
+year &lt;- c(2012:2019)
+
+# podium placement, by year
+first &lt;- c(&quot;Mik&quot;, &quot;Nate&quot;, &quot;Nate&quot;, &quot;Chris&quot;, &quot;Nate&quot;, &quot;Nate&quot;, &quot;Dave&quot;, &quot;Dave&quot;)
+second &lt;- c(&quot;Jon&quot;, &quot;Alex&quot;, &quot;Ian&quot;, &quot;Ross&quot;, &quot;Jon&quot;, &quot;Chris&quot;, &quot;Jon&quot;, &quot;Jon&quot;)
+third &lt;- c(&quot;Katz&quot;, &quot;Katz&quot;, &quot;Jack&quot;, &quot;Dave&quot;, &quot;Katz&quot;, &quot;Katz&quot;, &quot;Chris&quot;, &quot;Ross&quot;)
+
+# podium tibble
+podium &lt;- tibble(year, first, second, third)
+
+# show work
+podium</code></pre>
+<pre><code>## # A tibble: 8 x 4
+##    year first second third
+##   &lt;int&gt; &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt;
+## 1  2012 Mik   Jon    Katz 
+## 2  2013 Nate  Alex   Katz 
+## 3  2014 Nate  Ian    Jack 
+## 4  2015 Chris Ross   Dave 
+## 5  2016 Nate  Jon    Katz 
+## 6  2017 Nate  Chris  Katz 
+## 7  2018 Dave  Jon    Chris
+## 8  2019 Dave  Jon    Ross</code></pre>
+</div>

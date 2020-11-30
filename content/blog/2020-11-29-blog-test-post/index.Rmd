@@ -1,0 +1,54 @@
+---
+title: blog test post
+author: Alexander C. Hungerford
+date: '2020-11-29'
+slug: []
+categories:
+  - blog
+tags:
+  - fantasy football
+  - beginners
+description: ''
+featured: ''
+featuredalt: ''
+featuredpath: ''
+linktitle: ''
+type: post
+---
+## Setup
+
+```{r setup}
+# packages to load
+library(tidyverse)
+```
+
+## League Basics
+
+```{r}
+# league members - not sorted
+gm <- c("Alex", "Katz", "Brett", "Mikulich", "Chris", "Jack", "Jon", "Todd", "Ian", "Ashton", "Dave", "Nate")
+
+# alphabetized gm list
+gm <- sort(gm)
+
+# show list
+gm
+```
+
+
+```{r}
+# list of years league has been active
+year <- c(2012:2019)
+
+# podium placement, by year
+first <- c("Mik", "Nate", "Nate", "Chris", "Nate", "Nate", "Dave", "Dave")
+second <- c("Jon", "Alex", "Ian", "Ross", "Jon", "Chris", "Jon", "Jon")
+third <- c("Katz", "Katz", "Jack", "Dave", "Katz", "Katz", "Chris", "Ross")
+
+# podium tibble
+podium <- tibble(year, first, second, third)
+
+# show work
+podium
+```
+
