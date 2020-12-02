@@ -15,6 +15,12 @@ linktitle: ''
 type: post
 ---
 
+# Problems
+
+One thing I'm noticing is that when I create a new post using the blogdown add-in each post is created as *subdirectory* in `./content/blog` but the posts don't render on the blog after saving or after building `blogdown::build_site()`.
+
+On the other hand, the posts that go directly into the `./content/blog` but do not go into a subdirectory render correctly on the `blog` page.
+
 ```{r}
 library(dplyr)
 ```
